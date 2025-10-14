@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>고딩코딩 | Go-Ding Coding</title>
+  <style>
+    /* 🎨 기본 스타일 */
+    body {
+      font-family: "Pretendard", "Noto Sans KR", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f7fb;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #004aad;
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    header h1 {
+      font-size: 3em;
+      margin: 0;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 1.2em;
+      opacity: 0.9;
+    }
+
+    nav {
+      background-color: #003b8e;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 15px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      margin-bottom: 40px;
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    h2 {
+      color: #004aad;
+      margin-bottom: 15px;
+    }
+
+    ul {
+      list-style-type: "💻 ";
+      padding-left: 20px;
+    }
+
+    footer {
+      background-color: #111;
+      color: #aaa;
+      text-align: center;
+      padding: 25px;
+      font-size: 0.9em;
+    }
+
+    .members-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .member {
+      background: #eef3ff;
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .member h3 {
+      margin: 10px 0 5px;
+    }
+
+    .member p {
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    .project {
+      margin-bottom: 15px;
+    }
+
+    .project b {
+      color: #004aad;
+    }
+
+    a {
+      color: #004aad;
+    }
+  </style>
+</head>
+<body>
+  <!-- 헤더 -->
+  <header>
+    <h1>고딩코딩 Go-Ding Coding 💻</h1>
+    <p>“우리의 코드는 아직 미완성, 하지만 가능성은 무한대!”</p>
+  </header>
+
+  <!-- 내비게이션 -->
+  <nav>
+    <a href="#about">소개</a>
+    <a href="#activities">활동</a>
+    <a href="#projects">프로젝트</a>
+    <a href="#members">멤버</a>
+    <a href="#contact">문의</a>
+  </nav>
+
+  <!-- 동아리 소개 -->
+  <section id="about">
+    <div class="card">
+      <h2>💡 동아리 소개</h2>
+      <p>
+        고딩코딩은 프로그래밍과 기술을 통해 세상을 이해하고 변화시키는 것을 목표로 하는 고등학교 코딩 동아리입니다.  
+        Python, C, HTML/CSS 등 다양한 언어를 배우며, 인공지능·로봇·웹 개발 등 창의적인 프로젝트를 직접 설계합니다.  
+        단순한 코딩 학습을 넘어, 문제를 정의하고 해결하는 “엔지니어적 사고력”을 기르는 것이 우리의 목표입니다.
+      </p>
+    </div>
+  </section>
+
+  <!-- 주요 활동 -->
+  <section id="activities">
+    <div class="card">
+      <h2>📘 주요 활동</h2>
+      <ul>
+        <li>Python, HTML/CSS, C 언어 기초 학습</li>
+        <li>GitHub를 이용한 협업 및 버전 관리 실습</li>
+        <li>미니 프로젝트 및 교내 코딩 챌린지 진행</li>
+        <li>청소년 해커톤 및 외부 공모전 참가</li>
+        <li>AI·IoT·웹 융합 프로젝트 탐구</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 프로젝트 -->
+  <section id="projects">
+    <div class="card">
+      <h2>🛠️ 프로젝트 소개</h2>
+      <div class="project">
+        <b>Smart Attendance</b> – 얼굴 인식 기반 자동 출석 시스템<br>
+        카메라로 학생을 인식해 자동으로 출석 체크를 진행하는 프로젝트입니다.
+      </div>
+      <div class="project">
+        <b>EcoLight</b> – 조도 센서를 활용한 절전형 조명 제어<br>
+        주변 밝기를 감지해 조명을 자동으로 조절하는 친환경 프로젝트입니다.
+      </div>
+      <div class="project">
+        <b>SchoolBot</b> – 학교 일정 안내 챗봇<br>
+        GPT API를 활용해 학교 일정, 점심 메뉴 등을 안내하는 웹 챗봇입니다.
+      </div>
+    </div>
+  </section>
+
+  <!-- 멤버 소개 -->
+  <section id="members">
+    <div class="card">
+      <h2>👩‍💻 멤버 소개</h2>
+      <div class="members-grid">
+        <div class="member">
+          <h3>이채영</h3>
+          <p>2학년 / 회장 / 웹 개발 & 디자인</p>
+        </div>
+        <div class="member">
+          <h3>김민준</h3>
+          <p>1학년 / 부회장 / Python & AI</p>
+        </div>
+        <div class="member">
+          <h3>정서윤</h3>
+          <p>2학년 / 그래픽 디자이너 / 포스터 제작</p>
+        </div>
+        <div class="member">
+          <h3>최현우</h3>
+          <p>1학년 / IoT 팀 / 센서 제어 개발</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 문의 -->
+  <section id="contact">
+    <div class="card">
+      <h2>📬 문의하기</h2>
+      <p>
+        지도교사: 홍길동 선생님<br />
+        이메일: <a href="mailto:godingcoding@gmail.com">godingcoding@gmail.com</a><br />
+        Instagram: <a href="https://instagram.com/godingcoding" target="_blank">@godingcoding</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- 푸터 -->
+  <footer>
+    © 2025 고딩코딩 Go-Ding Coding | Made with 💙 using GitHub Pages
+  </footer>
+</body>
+</html>
