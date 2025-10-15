@@ -10,6 +10,7 @@
       margin: 0;
       background-color: #f7f9fc;
       color: #333;
+      transition: all 0.3s ease-in-out;
     }
 
     header {
@@ -28,7 +29,7 @@
       background-color: #374151;
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
+      gap: 2rem;
       padding: 0.75rem 0;
     }
 
@@ -36,19 +37,22 @@
       color: white;
       text-decoration: none;
       font-weight: 500;
+      transition: color 0.2s;
     }
 
     nav a:hover {
       color: #60a5fa;
     }
 
-    section {
+    .content {
       max-width: 900px;
       margin: 2rem auto;
       background: white;
       border-radius: 12px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.05);
       padding: 2rem;
+      min-height: 300px;
+      transition: opacity 0.4s;
     }
 
     h2 {
@@ -75,43 +79,65 @@
   </header>
 
   <nav>
-    <a href="#intro">소개</a>
-    <a href="#activity">활동</a>
-    <a href="#project">프로젝트</a>
-    <a href="#join">가입 안내</a>
+    <a href="#" onclick="showPage('home')">홈</a>
+    <a href="#" onclick="showPage('intro')">소개</a>
+    <a href="#" onclick="showPage('activity')">활동</a>
+    <a href="#" onclick="showPage('project')">프로젝트</a>
+    <a href="#" onclick="showPage('join')">가입 안내</a>
   </nav>
 
-  <section id="intro">
-    <h2>동아리 소개</h2>
-    <p>고딩코딩은 프로그래밍에 관심 있는 학생들이 모여 Python, 웹 개발, AI 등 다양한 분야를 함께 공부하고 프로젝트를 진행하는 동아리입니다. 
-    처음 배우는 친구들도 함께 성장할 수 있는 열린 분위기를 추구합니다.</p>
-  </section>
-
-  <section id="activity">
-    <h2>주요 활동</h2>
-    <ul>
-      <li>Python 기초 및 알고리즘 학습</li>
-      <li>웹사이트 제작 실습 (HTML, CSS, JavaScript)</li>
-      <li>AI·로봇 관련 창의 설계 프로젝트</li>
-      <li>코딩 경진대회 및 해커톤 참가</li>
-    </ul>
-  </section>
-
-  <section id="project">
-    <h2>대표 프로젝트</h2>
-    <p>💡 <strong>스마트 학교 생활 도우미</strong> — 학교의 생체 리듬 데이터 기반 자동화 시스템을 만드는 프로젝트로, 
-    AI와 기계공학적 아이디어를 결합해 학생들이 편리하게 생활할 수 있는 환경을 설계했습니다.</p>
-  </section>
-
-  <section id="join">
-    <h2>가입 안내</h2>
-    <p>코딩을 처음 접하더라도 걱정하지 마세요!  
-    함께 배우며 성장할 준비가 되어 있다면 누구나 환영합니다.  
-    관심 있는 학생은 지도교사 또는 회장에게 문의해주세요 😊</p>
-  </section>
+  <div class="content" id="content">
+    <h2>환영합니다 👋</h2>
+    <p>고딩코딩 홈페이지에 오신 것을 환영합니다!<br>
+    우리는 함께 배우고, 함께 성장하며, 아이디어를 현실로 만드는 코딩 동아리입니다.</p>
+  </div>
 
   <footer>
     © 2025 고딩코딩 | Made with ❤️ by Coding Club Members
   </footer>
+
+  <script>
+    const pages = {
+      home: `
+        <h2>환영합니다 👋</h2>
+        <p>고딩코딩 홈페이지에 오신 것을 환영합니다!<br>
+        우리는 함께 배우고, 함께 성장하며, 아이디어를 현실로 만드는 코딩 동아리입니다.</p>
+      `,
+      intro: `
+        <h2>동아리 소개</h2>
+        <p>고딩코딩은 프로그래밍에 관심 있는 학생들이 모여 Python, 웹 개발, AI 등 다양한 분야를 함께 공부하고 프로젝트를 진행하는 동아리입니다. 
+        처음 배우는 친구들도 함께 성장할 수 있는 열린 분위기를 추구합니다.</p>
+      `,
+      activity: `
+        <h2>주요 활동</h2>
+        <ul>
+          <li>Python 기초 및 알고리즘 학습</li>
+          <li>웹사이트 제작 실습 (HTML, CSS, JavaScript)</li>
+          <li>AI·로봇 관련 창의 설계 프로젝트</li>
+          <li>코딩 경진대회 및 해커톤 참가</li>
+        </ul>
+      `,
+      project: `
+        <h2>대표 프로젝트</h2>
+        <p>💡 <strong>스마트 학교 생활 도우미</strong> — 학교의 생체 리듬 데이터 기반 자동화 시스템을 만드는 프로젝트로, 
+        AI와 기계공학적 아이디어를 결합해 학생들이 편리하게 생활할 수 있는 환경을 설계했습니다.</p>
+      `,
+      join: `
+        <h2>가입 안내</h2>
+        <p>코딩을 처음 접하더라도 걱정하지 마세요!  
+        함께 배우며 성장할 준비가 되어 있다면 누구나 환영합니다.  
+        관심 있는 학생은 지도교사 또는 회장에게 문의해주세요 😊</p>
+      `
+    };
+
+    function showPage(page) {
+      const content = document.getElementById('content');
+      content.style.opacity = 0;
+      setTimeout(() => {
+        content.innerHTML = pages[page];
+        content.style.opacity = 1;
+      }, 200);
+    }
+  </script>
 </body>
 </html>
