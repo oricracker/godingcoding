@@ -1,135 +1,126 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>기계공학과 소개</title>
-  <style>
-    body {
-      font-family: 'Noto Sans KR', sans-serif;
-      margin: 0;
-      background-color: #f5f5f5;
-      color: #333;
-    }
-    header {
-      background-color: #004b8d;
-      color: white;
-      text-align: center;
-      padding: 1.5em 0;
-    }
-    nav ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      gap: 2em;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    .content {
-      background: white;
-      margin: 2em auto;
-      padding: 2em;
-      border-radius: 12px;
-      width: 80%;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-    h2 {
-      color: #004b8d;
-    }
-    .project {
-      margin: 1em 0;
-      padding: 1em;
-      border-left: 5px solid #004b8d;
-      background-color: #f0f8ff;
-      border-radius: 8px;
-    }
-    button {
-      background-color: #004b8d;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1em;
-    }
-    button:hover {
-      background-color: #0072ce;
-    }
-    footer {
-      text-align: center;
-      padding: 1em;
-      background-color: #004b8d;
-      color: white;
-      margin-top: 3em;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>자동차 제동거리 시뮬레이터</title>
+<style>
+  body {
+    text-align: center;
+    background-color: #eef3f7;
+    font-family: 'Arial';
+  }
+  #road {
+    position: relative;
+    width: 900px;
+    height: 120px;
+    background-color: #777;
+    margin: 40px auto;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  #car {
+    position: absolute;
+    left: 0;
+    top: 35px;
+    width: 70px;
+    height: 35px;
+    background-color: red;
+    border-radius: 5px;
+  }
+  #controls {
+    margin-top: 20px;
+  }
+  input, select, button {
+    margin: 10px;
+    padding: 5px 10px;
+    font-size: 16px;
+  }
+  h2 { margin-bottom: 0; }
+</style>
 </head>
 <body>
-  <header>
-    <h1>기계공학과에 오신 것을 환영합니다</h1>
-    <nav>
-      <ul>
-        <li><a href="#intro">소개</a></li>
-        <li><a href="#fields">세부 분야</a></li>
-        <li><a href="#projects">프로젝트</a></li>
-        <li><a href="#join">지원 안내</a></li>
-      </ul>
-    </nav>
-  </header>
+  <h2>🚗 자동차 제동거리 시뮬레이터</h2>
+  <div id="road">
+    <div id="car"></div>
+  </div>
 
-  <section id="intro" class="content">
-    <h2>학과 소개</h2>
-    <p>
-      기계공학은 에너지, 동력, 소재, 제어, 설계 등 다양한 공학 지식을 종합적으로 다루는 학문입니다.
-      자동차, 항공기, 로봇, 에너지 시스템 등 첨단 산업의 핵심 기술을 이끌며, 인간의 삶을 더욱 편리하고 안전하게 만듭니다.
-    </p>
-  </section>
+  <div id="controls">
+    <label>속도 (km/h): <input type="number" id="speed" value="60"></label>
+    <label>반응시간 (초): <input type="number" id="reaction" value="1.0" step="0.1"></label>
+    <label>노면 상태:
+      <select id="mu">
+        <option value="0.7">건조 도로 (μ=0.7)</option>
+        <option value="0.4">젖은 도로 (μ=0.4)</option>
+        <option value="0.2">얼음길 (μ=0.2)</option>
+      </select>
+    </label>
+    <button onclick="startSimulation()">시뮬레이션 시작</button>
+  </div>
 
-  <section id="fields" class="content">
-    <h2>세부 전공 분야</h2>
-    <ul>
-      <li>열·유체공학: 엔진, 발전기, 냉난방 시스템 등 에너지 변환과 유동 해석 연구</li>
-      <li>재료·설계공학: 강도, 내구성, 경량화를 고려한 구조 설계 및 소재 개발</li>
-      <li>제어·로봇공학: 센서, 액추에이터, AI 제어 기술을 활용한 자동화 시스템 개발</li>
-      <li>정밀기계공학: 반도체·의료기기 등 미세가공 기술 및 고정밀 측정 기술 연구</li>
-    </ul>
-  </section>
+  <p id="info"></p>
 
-  <section id="projects" class="content">
-    <h2>대표 프로젝트</h2>
-    <div class="project">
-      <h3>자율주행 로봇 설계</h3>
-      <p>센서 기반 경로 인식과 PID 제어를 이용한 자율주행 로봇 개발</p>
-    </div>
-    <div class="project">
-      <h3>에너지 효율 차량</h3>
-      <p>경량화 소재와 공기저항 최소화 설계를 통해 연비를 극대화한 차량 제작</p>
-    </div>
-    <div class="project">
-      <h3>스마트 팩토리 시스템</h3>
-      <p>IoT와 자동 제어 기술을 활용한 지능형 생산 라인 구축</p>
-    </div>
-  </section>
+<script>
+function startSimulation() {
+  const v = parseFloat(document.getElementById('speed').value) / 3.6; // km/h -> m/s
+  const reaction = parseFloat(document.getElementById('reaction').value);
+  const mu = parseFloat(document.getElementById('mu').value);
+  const g = 9.8;
 
-  <section id="join" class="content">
-    <h2>지원 안내</h2>
-    <p>
-      기계공학과는 창의적인 설계 능력과 문제 해결력을 갖춘 인재를 환영합니다.<br>
-      기계, 에너지, 로봇, 항공 등 미래 산업의 주역이 되고 싶은 학생이라면 지금 도전하세요!
-    </p>
-    <button onclick="alert('지원 페이지는 준비 중입니다.')">지원하기</button>
-  </section>
+  // 계산
+  const reactionDist = v * reaction;
+  const brakeDist = v * v / (2 * mu * g);
+  const totalDist = reactionDist + brakeDist;
 
-  <footer>
-    <p>© 2025 Mechanical Engineering Department</p>
-  </footer>
+  // 결과 표시
+  const info = document.getElementById('info');
+  info.innerHTML = `
+    <b>결과</b><br>
+    반응거리: ${reactionDist.toFixed(1)} m<br>
+    제동거리: ${brakeDist.toFixed(1)} m<br>
+    총 정지거리: ${totalDist.toFixed(1)} m
+  `;
+
+  // 애니메이션 관련
+  const car = document.getElementById('car');
+  const road = document.getElementById('road');
+  const roadWidth = road.clientWidth - 70; // 차 크기 제외
+  let time = 0;
+  let pos = 0;
+
+  // 전체 시간 (반응 + 제동)
+  const totalTime = reaction + v / (mu * g);
+  const fps = 60;
+  const interval = 1000 / fps;
+  const pixelsPerMeter = roadWidth / totalDist;
+
+  // 초기화
+  clearInterval(window.sim);
+  car.style.left = '0px';
+  car.style.backgroundColor = 'red';
+
+  window.sim = setInterval(() => {
+    time += 1 / fps;
+
+    if (time < reaction) {
+      // 반응 시간 동안 감속 없음
+      pos = v * time;
+    } else {
+      const t = time - reaction;
+      const decel = mu * g;
+      const d = reactionDist + (v * t - 0.5 * decel * t * t);
+      pos = Math.min(d, totalDist);
+    }
+
+    // 화면 위치 반영
+    car.style.left = (pos * pixelsPerMeter) + 'px';
+
+    // 멈춤 처리
+    if (pos >= totalDist) {
+      clearInterval(window.sim);
+      car.style.backgroundColor = 'blue'; // 정지 표시
+    }
+  }, interval);
+}
+</script>
 </body>
 </html>
-
